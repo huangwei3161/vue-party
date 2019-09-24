@@ -15,7 +15,7 @@
         <nav id="nav-menu-container">
           <ul class="nav-menu">
             <li class="menu-active">
-              <a href="#body">Home</a>
+              <a href="#app">Home</a>
             </li>
             <li>
               <a href="#services">We Do</a>
@@ -105,7 +105,10 @@ export default {
   background: #09040c;
   box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);
 }
-
+#header {
+  width: 100%;
+  position: fixed;
+}
 #header #logo h1 {
   font-size: 28px;
   margin: 0 0 0 0;
