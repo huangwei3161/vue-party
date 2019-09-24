@@ -1,0 +1,11 @@
+1.下载axios到自己的项目当中
+npm install --save axios vue-axios
+2.在项目的main.js下面引用插件
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
+3.使用axios
+举例：
+this.axios.get(`http://localhost:8091/?id=${id1}`).then((response) => {
+        console.log(response)
+})
