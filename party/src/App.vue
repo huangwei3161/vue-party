@@ -10,7 +10,7 @@
               </span>PARTY
             </a>
           </h1>
-        </div>
+        </div> 
 
         <nav id="nav-menu-container">
           <ul class="nav-menu">
