@@ -108,6 +108,7 @@ export default {
 #header {
   width: 100%;
   position: fixed;
+ 
 }
 #header #logo h1 {
   font-size: 28px;
@@ -200,10 +201,12 @@ a:focus {
 }
 #intro {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
+
   position: relative;
-  background: url("../img/intro-carousel/1.jpg") no-repeat;
+  background: url("../img/intro-carousel/1.jpg") 0 84px no-repeat;
   background-size: cover;
+  
 }
 
 #intro .intro-content {
