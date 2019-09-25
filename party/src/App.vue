@@ -10,18 +10,18 @@
               </span>PARTY
             </a>
           </h1>
-        </div> 
+        </div>
 
         <nav id="nav-menu-container">
           <ul class="nav-menu">
             <li class="menu-active">
-              <a href="#app">Home</a>
+              <a href="#" @click="onScroll(0)">Home</a>
             </li>
             <li>
-              <a href="#services">We Do</a>
+              <a href="#" @click="onScroll(600)">We Do</a>
             </li>
             <li>
-              <a href="#about">Who We</a>
+              <a href="#" @click="onScroll(1000)">Who We</a>
             </li>
             <li>
               <a href="#portfolio">Gallery</a>
@@ -41,50 +41,138 @@
           </ul>
         </nav>
       </div>
-      
     </header>
     <section id="intro">
-        <div class="intro-content">
-          <h2>
-            <span>Party Night</span>
-            <br />Crazy Non-Stop Music Reload
-          </h2>
-          <div>
-            <a href="#about" class="btn-get-started scrollto">Book Now</a>
-          </div>
+      <div class="intro-content">
+        <h2>
+          <span>Party Night</span>
+          <br />Crazy Non-Stop Music Reload
+        </h2>
+        <div>
+          <a href="#about" class="btn-get-started scrollto">Book Now</a>
         </div>
-        <div class="item" style="background-image: url('img/intro-carousel/1.jpg');"></div>
-     </section>
-      <section id="services">
+      </div>
+      <div class="item" style="background-image: url('img/intro-carousel/1.jpg');"></div>
+    </section>
+    <section id="services">
       <div class="container">
         <div class="section-header">
           <h2>We Do</h2>
           <p>{{text}}</p>
         </div>
-        
-         <div class="box">
-            <HelloWorld  v-for="(todo,index ) in todos" :key="index" :title="todo.title" :text="todo.text"></HelloWorld>
-            
-             </div>
-           </div>
-         </section>
+
+        <div class="box">
+          <HelloWorld
+            v-for="(todo,index ) in todos"
+            :key="index"
+            :title="todo.title"
+            :text="todo.text"
+          ></HelloWorld>
+        </div>
+      </div>
+    </section>
+    <whowe ></whowe>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-
+import whowe from "./components/who we.vue";
 export default {
   name: "app",
-  data(){
-   return{ text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore",
-   todos:[{title:"Organisation",text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."},{title:"Event Party",text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."},{title:"Music Galla",text:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."},]
-     
-   
-   }
+  data() {
+    return {
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore",
+      todos: [
+        {
+          title: "Organisation",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."
+        },
+        {
+          title: "Event Party",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."
+        },
+        {
+          title: "Music Galla",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla."
+        }
+      ]
+    };
+  },
+  mounted() {
+    this.$nextTick(function() {
+      // window.addEventListener("scroll", this.onScroll);
+    });
+  },
+  methods: {
+    onScroll(key) {
+      let scrolled =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      // console.log(1);
+      // console.log(document.documentElement.scrollTop);
+      let step = 0;
+      if (scrolled < key) {
+        smoothDown();
+      } else {
+        let newTotal = scrolled - key;
+        step = newTotal / 800;
+        smoothUp();
+      }
+      function smoothDown() {
+        if (scrolled < key) {
+          scrolled += step;
+          step+=1/20;
+          document.body.scrollTop = scrolled;
+          document.documentElement.scrollTop = scrolled;
+          setTimeout(smoothDown, 5);
+        } else {
+          document.body.scrollTop = key;
+          document.documentElement.scrollTop = key;
+        }
+      }
+      function smoothUp() {
+        if (scrolled > key) {
+          scrolled -= step;
+          step+=1/20;
+          document.body.scrollTop = scrolled;
+          document.documentElement.scrollTop = scrolled;
+          setTimeout(smoothUp, 5);
+        } else {
+          document.body.scrollTop = key;
+          document.documentElement.scrollTop = key;
+        }
+      }
+    },
+    scrollTop() {
+      let distance =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      let step = distance / 50;
+      let total = 0;
+      if (total < distance) {
+        let newTotal = distance - total;
+        step = newTotal / 50;
+        smoothUp();
+      }
+      function smoothUp() {
+        if (distance > 1) {
+          distance -= step;
+          document.body.scrollTop = distance;
+          document.documentElement.scrollTop = distance;
+          setTimeout(smoothUp, 10);
+        } else {
+          document.body.scrollTop = 1;
+          document.documentElement.scrollTop = 1;
+        }
+      }
+    }
   },
   components: {
-    HelloWorld
+    HelloWorld,
+    whowe
   }
 };
 </script>
@@ -108,7 +196,6 @@ export default {
 #header {
   width: 100%;
   position: fixed;
- 
 }
 #header #logo h1 {
   font-size: 28px;
@@ -206,7 +293,6 @@ a:focus {
   position: relative;
   background: url("../img/intro-carousel/1.jpg") 0 84px no-repeat;
   background-size: cover;
-  
 }
 
 #intro .intro-content {
@@ -231,12 +317,10 @@ a:focus {
 }
 
 #intro .intro-content h2 span {
-  color:  #ff377b;
+  color: #ff377b;
   font-size: 64px;
   text-transform: uppercase;
-  font-family: 'Russo One', sans-serif;
-  
-  
+  font-family: "Russo One", sans-serif;
 }
 #intro .intro-content .btn-get-started {
   margin: 10px 10px;
@@ -252,38 +336,36 @@ a:focus {
   background: #ff377b;
   border: 2px solid #ff377b;
 }
-#services{
+#services {
   width: 100%;
   background: #280045;
   display: flex;
   margin: 0 auto;
 }
-#services .container{
-  color: #E9125A;
+#services .container {
+  color: #e9125a;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
-  
 }
-#services .container h2{
+#services .container h2 {
   margin: 0 auto;
   width: 180px;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom:3px solid #E9125A;
+  border-bottom: 3px solid #e9125a;
 }
-#services p{
-  color: #C393C7;
+#services p {
+  color: #c393c7;
   font-size: 16px;
   width: 70%;
   margin: 0 auto;
 }
-#services .box{
-
+#services .box {
   display: flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
 }
 </style>
