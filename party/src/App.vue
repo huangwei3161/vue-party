@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <section id="topbar" class="d-none d-lg-block">
+    <button type="button" id="mobile-nav-active">
+      <i class="fa">点击</i>
+    </button>
+  </section>
     <header id="header">
       <div class="container">
         <div id="logo" class="pull-left">
@@ -18,10 +23,10 @@
               <a href="#" @click="onScroll(0)">Home</a>
             </li>
             <li>
-              <a href="#" @click="onScroll(600)">We Do</a>
+              <a href="#" @click="onScroll(640)">We Do</a>
             </li>
             <li>
-              <a href="#" @click="onScroll(1000)">Who We</a>
+              <a href="#" @click="onScroll(1280)">Who We</a>
             </li>
             <li>
               <a href="#portfolio">Gallery</a>
@@ -72,6 +77,7 @@
       </div>
     </section>
     <whowe ></whowe>
+    
   </div>
 </template>
 
@@ -125,10 +131,10 @@ export default {
       function smoothDown() {
         if (scrolled < key) {
           scrolled += step;
-          step+=1/20;
+          step+=1/30;
           document.body.scrollTop = scrolled;
           document.documentElement.scrollTop = scrolled;
-          setTimeout(smoothDown, 5);
+          setTimeout(smoothDown, 3);
         } else {
           document.body.scrollTop = key;
           document.documentElement.scrollTop = key;
@@ -137,10 +143,10 @@ export default {
       function smoothUp() {
         if (scrolled > key) {
           scrolled -= step;
-          step+=1/20;
+          step+=1/30;
           document.body.scrollTop = scrolled;
           document.documentElement.scrollTop = scrolled;
-          setTimeout(smoothUp, 5);
+          setTimeout(smoothUp, 3);
         } else {
           document.body.scrollTop = key;
           document.documentElement.scrollTop = key;
@@ -184,6 +190,115 @@ export default {
 }
 #app {
 }
+#mobile-nav-toggle {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  margin: 20px 20px 0 0;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  display: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+
+#mobile-nav-toggle i {
+  color: #9C27B0;
+}
+body.mobile-nav-active {
+  overflow: hidden;
+}
+
+body.mobile-nav-active #mobile-nav {
+  left: 0;
+}
+
+body.mobile-nav-active #mobile-nav-toggle {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  #nav-menu-container {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  #mobile-nav-toggle {
+    display: inline;
+  }
+}
+@media (max-width: 768px) {
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#mobile-nav-toggle {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    margin: 20px 20px 0 0;
+    border: 0;
+    background: none;
+    font-size: 24px;
+    display: none;
+    transition: all 0.4s;
+    outline: none;
+    cursor: pointer;
+}
+}
+#topbar {
+  background: linear-gradient(45deg, #E91E63 -132%, #0c2e8a 100%);
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  display: none !important;
+}
+
+#topbar .contact-info a {
+  line-height: 1;
+  color: #acacac;
+}
+
+#topbar .contact-info a:hover {
+  color: #E91E63;
+}
+
+#topbar .contact-info i {
+  color: #E91E63;
+  padding: 4px;
+}
+.contact-info.float-left {
+    color: #acacac;
+}
+#topbar .contact-info .fa-phone {
+  padding-left: 20px;
+  margin-left: 20px;
+  border-left: 1px solid #e9e9e947;
+}
+
+#topbar .social-links a {
+  color: #E91E63;
+  padding: 4px 12px;
+  display: inline-block;
+  line-height: 1px;
+  border-left: 1px solid #e9e9e924;
+}
+
+#topbar .social-links a:hover {
+  color: #E91E63;
+}
+
+#topbar .social-links a:first-child {
+  border-left: 0;
+}
+
 #header {
   height: 84px;
   transition: all 0.5s;
@@ -222,7 +337,18 @@ export default {
   padding: 0;
   margin: 0;
 }
-
+@media (max-width: 768px) {
+  #header {
+    padding: 20px 0;
+    height: 74px;
+  }
+  #header #logo h1 {
+    font-size: 34px;
+  }
+  #header #logo img {
+    max-height: 40px;
+  }
+}
 a {
   height: 84px;
   line-height: 84px;
