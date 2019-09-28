@@ -77,13 +77,16 @@
       </div>
     </section>
     <whowe ></whowe>
-    
+    <new1/>
+    <new2/>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import whowe from "./components/who we.vue";
+import new1 from './components/Num8.vue';
+import new2 from './components/Num9.vue';
 export default {
   name: "app",
   data() {
@@ -178,7 +181,9 @@ export default {
   },
   components: {
     HelloWorld,
-    whowe
+    whowe,
+    new1,
+    new2
   }
 };
 </script>
