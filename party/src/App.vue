@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import we from "./components/HelloWorld.vue";
 import whowe from "./components/who we.vue";
 export default {
   name: "app",
@@ -177,7 +177,7 @@ export default {
     }
   },
   components: {
-    HelloWorld,
+    we,
     whowe
   }
 };
