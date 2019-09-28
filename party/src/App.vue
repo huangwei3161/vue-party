@@ -67,12 +67,12 @@
         </div>
 
         <div class="box">
-          <HelloWorld
+          <we
             v-for="(todo,index ) in todos"
             :key="index"
             :title="todo.title"
             :text="todo.text"
-          ></HelloWorld>
+          ></we>
         </div>
       </div>
     </section>
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import we from "./components/HelloWorld.vue";
+import we from "./components/we.vue";
 import whowe from "./components/who we.vue";
 export default {
   name: "app",
