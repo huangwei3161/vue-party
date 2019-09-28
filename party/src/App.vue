@@ -180,15 +180,12 @@ export default {
     }
   },
   components: {
-<<<<<<< HEAD
-    HelloWorld,
+
+     we,
     whowe,
     new1,
     new2
-=======
-    we,
-    whowe
->>>>>>> a3ffda1306806a6419be1837e1b1e8fb4a3e9cc3
+
   }
 };
 </script>
@@ -504,4 +501,5 @@ a:focus {
   flex-direction: row;
   justify-content: center;
 }
+
 </style>
