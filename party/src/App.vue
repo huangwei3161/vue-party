@@ -210,6 +210,7 @@ export default {
   margin: 0 0;
   padding: 0 0;
 }
+
 #app {
 }
 @keyframes keyL {
@@ -266,6 +267,7 @@ export default {
     opacity: 2;
   }
 }
+
 #mobile-nav-toggle {
   position: fixed;
   right: 0;
