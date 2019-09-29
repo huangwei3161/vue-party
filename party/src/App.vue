@@ -180,10 +180,12 @@ export default {
     }
   },
   components: {
+
+     we,
+    whowe,
     new1,
-    new2,
-    we,
-    whowe
+    new2
+
   }
 };
 </script>
@@ -497,4 +499,5 @@ a:focus {
   flex-direction: row;
   justify-content: center;
 }
+
 </style>
