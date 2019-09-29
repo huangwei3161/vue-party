@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <section id="topbar" class="d-none d-lg-block">
-    <button type="button" id="mobile-nav-active">
-      <i class="fa">点击</i>
-    </button>
-  </section>
+      <button type="button" id="mobile-nav-active">
+        <i class="fa">点击</i>
+      </button>
+    </section>
     <header id="header">
       <div class="container">
         <div id="logo" class="pull-left">
@@ -67,26 +67,26 @@
         </div>
 
         <div class="box">
-          <we
-            v-for="(todo,index ) in todos"
-            :key="index"
-            :title="todo.title"
-            :text="todo.text"
-          ></we>
+          <we class="boxc" v-for="(todo,index ) in todos" :key="index" :title="todo.title" :text="todo.text"></we>
         </div>
       </div>
     </section>
-    <whowe ></whowe>
-    <new1/>
-    <new2/>
+    <whowe></whowe>
+    <spon></spon>
+     <d3></d3>
+    <new1 />
+   
+    <new2 />
   </div>
 </template>
 
 <script>
 import we from "./components/we.vue";
 import whowe from "./components/who we.vue";
-import new1 from './components/Num8.vue';
-import new2 from './components/Num9.vue';
+import new1 from "./components/Num8.vue";
+import new2 from "./components/Num9.vue";
+import spon from "./components/sponsers";
+import d3 from "./components/3D.vue"
 export default {
   name: "app",
   data() {
@@ -114,10 +114,25 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      // window.addEventListener("scroll", this.onScroll);
+      window.addEventListener("scroll", this.keymove);
+       
     });
   },
   methods: {
+    keymove() {
+      let box = document.querySelector(".boxc");
+      let top = document.documentElement.scrollTop || document.body.scrollTop;
+      let num=Math.floor(Math.random()*2);
+      if (top > box.offsetTop - box.offsetHeight && top < box.offsetTop + box.offsetHeight ) {
+        if(num==1){
+          box.style.animation = "keyL 1s linear 0.1s 1"; //添加动画
+        }else{
+        box.style.animation = "keyR 1s linear 0.1s 1"; 
+        }
+        window.removeEventListener("scroll", this.keymove);
+      }
+      
+    },
     onScroll(key) {
       let scrolled =
         document.documentElement.scrollTop || document.body.scrollTop;
@@ -134,7 +149,7 @@ export default {
       function smoothDown() {
         if (scrolled < key) {
           scrolled += step;
-          step+=1/30;
+          step += 1 / 30;
           document.body.scrollTop = scrolled;
           document.documentElement.scrollTop = scrolled;
           setTimeout(smoothDown, 3);
@@ -146,7 +161,7 @@ export default {
       function smoothUp() {
         if (scrolled > key) {
           scrolled -= step;
-          step+=1/30;
+          step += 1 / 30;
           document.body.scrollTop = scrolled;
           document.documentElement.scrollTop = scrolled;
           setTimeout(smoothUp, 3);
@@ -180,12 +195,12 @@ export default {
     }
   },
   components: {
-
-     we,
+    we,
     whowe,
+    spon,
     new1,
+    d3,
     new2
-
   }
 };
 </script>
@@ -196,6 +211,60 @@ export default {
   padding: 0 0;
 }
 #app {
+}
+@keyframes keyL {
+  0% {
+    margin-right: -1000px;
+    margin-top:400px;
+    opacity: 0;
+  }
+  25% {
+    margin-right: -700px;
+    margin-top:300px;
+    opacity: 0.25;
+  }
+  50%{
+    margin-right: -400px;
+    margin-top:200px;
+    opacity: 0.5;
+  }
+  75%{
+    margin-right: -100px;
+    margin-top:100px;
+    opacity: 0.75;
+  }
+  100% {
+    margin-right: 0;
+    margin-top:0;
+    opacity: 1;
+  }
+}
+@keyframes keyR {
+  0% {
+    margin-left: -1000px;
+    margin-top:400px;
+    opacity: 0;
+  }
+  25% {
+    margin-left: -700px;
+    margin-top:300px;
+    opacity: 1;
+  }
+  50%{
+    margin-left: -400px;
+    margin-top:200px;
+    opacity: 1.5;
+  }
+  75%{
+    margin-left: -100px;
+    margin-top:100px;
+    opacity: 1.5;
+  }
+  100% {
+    margin-left: 0;
+    margin-top:0;
+    opacity: 2;
+  }
 }
 #mobile-nav-toggle {
   position: fixed;
@@ -213,7 +282,7 @@ export default {
 }
 
 #mobile-nav-toggle i {
-  color: #9C27B0;
+  color: #9c27b0;
 }
 body.mobile-nav-active {
   overflow: hidden;
@@ -244,8 +313,8 @@ body.mobile-nav-active #mobile-nav-toggle {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-#mobile-nav-toggle {
+  }
+  #mobile-nav-toggle {
     position: fixed;
     right: 0;
     top: 0;
@@ -258,10 +327,10 @@ body.mobile-nav-active #mobile-nav-toggle {
     transition: all 0.4s;
     outline: none;
     cursor: pointer;
-}
+  }
 }
 #topbar {
-  background: linear-gradient(45deg, #E91E63 -132%, #0c2e8a 100%);
+  background: linear-gradient(45deg, #e91e63 -132%, #0c2e8a 100%);
   padding: 10px 0;
   border-bottom: 1px solid #eee;
   font-size: 14px;
@@ -274,15 +343,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #topbar .contact-info a:hover {
-  color: #E91E63;
+  color: #e91e63;
 }
 
 #topbar .contact-info i {
-  color: #E91E63;
+  color: #e91e63;
   padding: 4px;
 }
 .contact-info.float-left {
-    color: #acacac;
+  color: #acacac;
 }
 #topbar .contact-info .fa-phone {
   padding-left: 20px;
@@ -291,7 +360,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #topbar .social-links a {
-  color: #E91E63;
+  color: #e91e63;
   padding: 4px 12px;
   display: inline-block;
   line-height: 1px;
@@ -299,7 +368,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #topbar .social-links a:hover {
-  color: #E91E63;
+  color: #e91e63;
 }
 
 #topbar .social-links a:first-child {
@@ -501,5 +570,4 @@ a:focus {
   flex-direction: row;
   justify-content: center;
 }
-
 </style>
