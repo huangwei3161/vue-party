@@ -180,15 +180,10 @@ export default {
     }
   },
   components: {
-<<<<<<< HEAD
-    HelloWorld,
-    whowe,
     new1,
-    new2
-=======
+    new2,
     we,
     whowe
->>>>>>> a3ffda1306806a6419be1837e1b1e8fb4a3e9cc3
   }
 };
 </script>
@@ -197,8 +192,6 @@ export default {
 * {
   margin: 0 0;
   padding: 0 0;
-}
-#app {
 }
 #mobile-nav-toggle {
   position: fixed;

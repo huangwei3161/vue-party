@@ -161,4 +161,8 @@ export default {
     margin-top: 5px;
     text-align: left;
   }
+
+  .item>ul li:hover{
+    color:#F90048;
+  }
 </style>
