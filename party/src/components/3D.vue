@@ -12,7 +12,7 @@
   <!-- 如何设置3D布局
         1、 先设置场景景深
         2、设置场景风格
-  3、改变相册元素rotatecX和rotateY的值-->
+  3、改变背景元素rotatecX和rotateY的值-->
 </template>
 <script>
 export default {
@@ -31,6 +31,7 @@ export default {
     var rotY = 0;
     this.$nextTick(() => {
       Array.prototype.forEach.call(imgs, (it, i, arr) => {
+        console.log(arr);
         it.style.transform = `rotateY(${i * unitDeg}deg) translateZ(300px)`;
         it.style.transition = `1s ${(len - i) * 0.1}s`;
         it.onmousedown = this.returnFalse;
@@ -61,6 +62,7 @@ export default {
         };
         this.onmouseup = e => {
           // 鼠标松开事件
+          console.log(e);
           console.log("松开");
           this.onmousemove = null;
         };

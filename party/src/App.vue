@@ -29,19 +29,19 @@
               <a href="#" @click="onScroll(1280)">Who We</a>
             </li>
             <li>
-              <a href="#portfolio">Gallery</a>
+              <a href="#portfolio" @click="onScroll(2760)">Gallery</a>
             </li>
             <li>
-              <a href="#event">Events</a>
+              <a href="#event" @click="onScroll(3700)">Events</a>
             </li>
             <li>
-              <a href="#team">Team</a>
+              <a href="#team" @click="onScroll(4700)">Team</a>
             </li>
             <li>
-              <a href="#price">Price</a>
+              <a href="#price" @click="onScroll(5560)">Price</a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a href="#contact" @click="onScroll(6360)">Contact</a>
             </li>
           </ul>
         </nav>
@@ -74,6 +74,9 @@
     <whowe></whowe>
     <spon></spon>
      <d3></d3>
+     <gallery></gallery>
+    <events></events>
+    <testmon></testmon>
     <new1 />
    
     <new2 />
@@ -86,7 +89,10 @@ import whowe from "./components/who we.vue";
 import new1 from "./components/Num8.vue";
 import new2 from "./components/Num9.vue";
 import spon from "./components/sponsers";
-import d3 from "./components/3D.vue"
+import d3 from "./components/3D.vue";
+import gallery from "./components/Gallery.vue";
+import events from "./components/Events.vue";
+import testmon from "./components/Testmon.vue";
 export default {
   name: "app",
   data() {
@@ -200,6 +206,9 @@ export default {
     spon,
     new1,
     d3,
+    gallery,
+    events,
+    testmon,
     new2
   }
 };
